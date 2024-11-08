@@ -32,15 +32,14 @@ class ElectionController extends Controller
 
     public function showPollingUnits($stateId, $lgaId, $wardId)
     {
-        // Paginate the polling units by ward_id (10 units per page)
+        
         $pollingUnits = PollingUnit::where('ward_id', $wardId)
             ->with(['announcedPuResults' => function ($query) {
-                // Select all columns from the AnnouncedPuResult model
+               
                 $query->select('*');
-            }]) // Eager load the related AnnouncedPuResult details
+            }]) 
             ->paginate(10);
     
-        // Return the view and pass the polling units data along with other parameters
         return view('polling-unit-details', compact('pollingUnits', 'stateId', 'lgaId', 'wardId'));
     }    
       

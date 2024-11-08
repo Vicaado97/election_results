@@ -9,16 +9,14 @@ class Ward extends Model
 {
     use HasFactory;
 
-    // Define the table name
     protected $table = 'ward';
 
-    // Define the primary key
+
     protected $primaryKey = 'uniqueid';
 
-    // Disable timestamps
+    
     public $timestamps = false;
 
-    // Define fillable attributes for mass assignment
     protected $fillable = [
         'ward_id',
         'ward_name',
