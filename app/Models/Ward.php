@@ -11,9 +11,7 @@ class Ward extends Model
 
     protected $table = 'ward';
 
-
     protected $primaryKey = 'uniqueid';
-
     
     public $timestamps = false;
 

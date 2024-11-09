@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\State;
-use App\Models\LGA;
+use App\Models\Lga;
 use App\Models\Ward;
 use App\Models\PollingUnit;
 
