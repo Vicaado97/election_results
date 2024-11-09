@@ -9,16 +9,15 @@ class Lga extends Model
 {
     use HasFactory;
 
-    // Specify the associated table
+    
     protected $table = 'lga';
 
-    // Define the primary key
+    
     protected $primaryKey = 'uniqueid';
 
-    // Disable automatic timestamps
+   
     public $timestamps = false;
 
-    // Define fillable attributes for mass assignment
     protected $fillable = [
         'lga_id',
         'lga_name',

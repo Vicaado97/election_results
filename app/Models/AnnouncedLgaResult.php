@@ -13,7 +13,6 @@ class AnnouncedLgaResult extends Model
 
     protected $primaryKey = 'result_id';
 
-    // The fields that are mass-assignable
     protected $fillable = [
         'lga_name',
         'party_abbreviation',
@@ -23,6 +22,5 @@ class AnnouncedLgaResult extends Model
         'user_ip_address'
     ];
 
-    // Disabling the timestamps if not needed
     public $timestamps = false;
 }
