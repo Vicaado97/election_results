@@ -42,7 +42,8 @@
         <div class="mt-6 flex justify-center"> 
             {{ $pollingUnits->links('pagination::tailwind') }}
         </div>
-
+    </div>
+    <div class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
         <h3 class="text-xl font-semibold text-gray-800 mt-8">Announced Results for Polling Units</h3>
 
         <table class="min-w-full table-auto mt-6">
@@ -68,6 +69,23 @@
                             <td class="px-4 py-2 border">{{ $result->user_ip_address }}</td>
                         </tr>
                     @endforeach
+                @endforeach
+            </tbody>
+        </table>
+        
+        <table class="min-w-full table-auto mt-6">
+            <thead>
+                <tr class="bg-gray-200 text-gray-700">
+                    <th class="px-4 py-2 border">Party Abbreviation</th>
+                    <th class="px-4 py-2 border">Total Votes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($partyTotals as $party => $totalScore)
+                    <tr class="text-gray-700">
+                        <td class="px-4 py-2 border">{{ $party }}</td>
+                        <td class="px-4 py-2 border">{{ $totalScore }}</td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>

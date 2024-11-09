@@ -32,15 +32,23 @@ class ElectionController extends Controller
 
     public function showPollingUnits($stateId, $lgaId, $wardId)
     {
-        
+        // Fetch polling units in the specified ward with related announced results
         $pollingUnits = PollingUnit::where('ward_id', $wardId)
-            ->with(['announcedPuResults' => function ($query) {
-               
-                $query->select('*');
-            }]) 
-            ->paginate(10);
+            ->with(['announcedPuResults'])
+            ->paginate(50);
     
-        return view('polling-unit-details', compact('pollingUnits', 'stateId', 'lgaId', 'wardId'));
-    }    
+        // Calculate total votes for each party within these polling units
+        $partyTotals = $pollingUnits->flatMap(function ($unit) {
+            return $unit->announcedPuResults;
+        })
+        ->groupBy('party_abbreviation')
+        ->map(function ($results) {
+            return $results->sum('party_score');
+        });
+    
+        // Pass totals to the view
+        return view('polling-unit-details', compact('pollingUnits', 'partyTotals', 'stateId', 'lgaId', 'wardId'));
+    }
+    
       
 }
